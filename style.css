@@ -61,21 +61,71 @@ header {
     text-shadow: 0 0 25px var(--main-color),
                  0 0 50px var(--main-color);
 }
-#menu-icon {
-    font-size: 3.6rem;
-    color: var(--main-color);
+.menu-icon {
     display: none;
+    font-size: 28px;
+    color: #fff;
+    cursor: pointer;
+}
+.menu-icon:hover {
+    display: block;
+}
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 1em;
+    padding: 0;
+    margin: 0;
+}
+.nav-list a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5em;
+    transition: background-color 0.3s;
+}
+@media only screen and (max-width: 768px) {
+    .navbar {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100px;
+        left: 0;
+        background-color: #000;
+        flex-direction: column;
+        align-items: center;
+    }
+    .menu-icon {
+        display: block;
+    }
+    .navbar.active {
+        display: flex;
+        text-align: center;
+    }
+    .navbar a {
+        width: 30%;
+        height: 30%;
+        text-align: center;
+        padding: 1rem;
+        flex-wrap: wrap;
+    }
+    .navbar a:last-of-type {
+        padding-bottom: 8px;
+    }
+    .menu-icon {
+        display: block;
+    }
 }
 
 section {
     min-height: 100vh;
-    padding: 10rem 9% 10rem;
+    padding: 10rem 9%;
 }
 .home {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 8rem;
+    justify-content: space-around;
+    height: 100vh;
+    padding: 2rem;
 }
 .home-content h3 {
     font-size: 3.2rem;
@@ -159,20 +209,52 @@ span {
 }
 
 .text-animation span::before {
-    content: 'Frontend Developer';
+    content: 'Designer';
     color: var(--main-color);
     animation: words 20s infinite;
 }
 
 .text-animation span::after {
     content: '';
-    background-color: var(--bg-color);
+    background-color: var(--second-bg-color);
     position: absolute;
     width: calc(100% + 8px);
     height: 100%;
     border-left: 2px solid #333;
     right: -8px;
     animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
+}
+
+@media only screen and (max-width: 768px) {
+    .header {
+        padding: 0.5rem;
+    }
+
+    .header .menu-icon {
+        display: block;
+    }
+
+    .header .navbar {
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .header .navbar.active {
+        display: flex;
+    }
+
+    .header .navbar a {
+        padding: 1rem;
+        text-align: center;
+        width: 100%;
+    }
 }
 
 @keyframes cursor {
@@ -183,10 +265,10 @@ span {
 
 @keyframes words {
     0%, 20% {
-        content: 'Frontend Developer';
+        content: 'Designer';
     }
     21%, 40% {
-        content: 'Web Developer';
+        content: 'YouTuber';
     }
     41%, 60% {
         content: 'TikToker';
@@ -222,18 +304,20 @@ span {
 }
 
 .profile-photo {
-    width: 200px;
-    height: 200px;
     border-radius: 50%;
-    border: 5px solid var(--border-color);
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-top: 1rem;
     box-shadow: 0 0 15px rgba(0, 102, 255, 0.5);
 }
 
 .about-photo{
-    width: 200px;
-    height: 200px;
     border-radius: 50%;
-    border: 5px solid var(--border-color);
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-top: 1em;
     box-shadow: 0 0 15px rgba(0, 102, 255, 0.5);
 }
 
@@ -255,28 +339,65 @@ span {
     border-radius: 50%;
     cursor: pointer;
 }
+.about {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-img {
+    flex: 1 1 300px;
+    margin: 20px;
+}
+
+.about-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.about-content {
+    flex: 1 1 300px;
+    margin: 20px;
+    position: relative;
+    text-align: left;
+}
+
+/* Heading styling */
 .heading {
     text-align: center;
     font-size: 8rem;
 }
-.about-content h2{
-    text-align: left;
+
+.about-content h2 {
     line-height: 1.5;
 }
-.about-content h3{
-    font-size: 2.6rem;
+
+.about-content h3 {
+    font-size: 3.6rem;
 }
-.about-content p{
+
+.about-content p {
     color: var(--text-color);
     font-size: 1.6rem;
     margin: 2rem 0 3rem;
 }
-.about-content .text-animation span::before {
-    content: 'Web Developer';
+
+.text-animation {
+    position: relative;
+}
+
+.text-animation span::before {
+    content: 'Designer';
     color: var(--main-color);
     animation: words 20s infinite;
 }
-.about-content .text-animation span::after {
+
+.text-animation span::after {
     content: '';
     background-color: var(--second-bg-color);
     position: absolute;
@@ -285,6 +406,58 @@ span {
     border-left: 2px solid #333;
     right: -8px;
     animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
+}
+
+/* Button styling */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--main-color);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #357ab7;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .heading {
+        font-size: 4rem;
+    }
+
+    .about-content h3 {
+        font-size: 2rem;
+    }
+
+    .about-content p {
+        font-size: 1.4rem;
+    }
+
+    .btn {
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .heading {
+        font-size: 2.5rem;
+    }
+
+    .about-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .about-content p {
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        padding: 6px 12px;
+    }
 }
 .services h2{
     margin-bottom: 5rem;
@@ -653,3 +826,4 @@ span {
     margin-top: auto;
     margin-bottom: 3rem;
 }
+

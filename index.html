@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Biodata Reza</title>
+    <title>Portofolio Reza Z.J</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
     
     <header class="header">
-        <a href="#home" class="logo">Reza<span>
-            Z.J
-        </span></a>
+        <a href="#home" class="logo">Reza<span> Z.J</span></a>
 
-        <i class='bx bx-menu' id="menu-icon"></i>
+        <div class="menu-icon" id="menu-icon">
+            <i class="ph ph-list"></i>
+            </div>
 
-        <nav class="navbar">
+        <nav class="navbar" id="navbar">
             <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
             <a href="#services">Services</a>
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
-            <a href="#hobby">Hoby</a>
+            <a href="#hobby">Hobby</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
@@ -30,28 +31,31 @@
     <section class="home" id="home">
         <div class="home-content">
             <h3>Hi</h3>
-            <h1>It's <span>
-                Reza Zaki Jauza</span></h1>
-            <h3 class="text-animation">
-                I'am a <span></span>
-            </h3>
-            <p>I am a student at the Lp3i Polytechnic Tasikmalaya Campus class of 2022.
-                I am majoring in Information Management.</p>
-
-                <div class="social-icons">
-                    <a href="https://x.com/rezz_zk"><i class='bx bxl-twitter' ></i></a>
-                    <a href="https://www.instagram.com/rezaaaaa_zj/"><i class='bx bxl-instagram-alt' ></i></a>
-                    <a href="https://www.tiktok.com/@bangrez.z?lang=en"><i class='bx bxl-tiktok' ></i></a>
-                    <a href="https://github.com/rezazakijauza"><i class='bx bxl-github' ></i></a>
-                </div>
-
-                <a href="#about" class="btn">About Me</a>
+            <h1>It's <span>Reza Zaki Jauza</span></h1>
+            <h3 class="text-animation">I'm a <span></span></h3>
+            <p>I am a student at the Lp3i Polytechnic Tasikmalaya Campus class of 2022. I am majoring in Information Management.</p>
+            <div class="social-icons">
+                <a href="https://x.com/rezz_zk"><i class='bx bxl-twitter'></i></a>
+                <a href="https://www.instagram.com/rezaaaaa_zj/"><i class='bx bxl-instagram-alt'></i></a>
+                <a href="https://www.tiktok.com/@bangrez.z?lang=en"><i class='bx bxl-tiktok'></i></a>
+                <a href="https://github.com/rezazakijauza"><i class='bx bxl-github'></i></a>
+            </div>
+            <a href="#about" class="btn">About Me</a>
         </div>
 
         <div class="home-img">
             <img src="assets/foto-blazer-biru.jpg" alt="Reza Zaki Jauza" class="profile-photo">
         </div>
     </section>
+
+    <script>
+        const menuIcon = document.getElementById('menu-icon');
+        const navbar = document.getElementById('navbar');
+
+        menuIcon.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+        });
+    </script>
 
     <section class="about" id="about">
         <div class="about-img">
