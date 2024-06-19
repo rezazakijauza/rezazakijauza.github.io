@@ -242,7 +242,7 @@ span {
 
 .social-icons {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     gap: 15px;
   }
   
@@ -251,7 +251,7 @@ span {
     text-decoration: none;
     font-size: 24px;
   }
-.social-icons a {
+  .social-icons a {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -741,21 +741,25 @@ span {
 }
 
 .projects-info h4 {
+    font-size: 3rem;
     margin: 10px 0;
     color: white;
 }
 
 .projects-info p {
-    font-size: 0.9em;
+    font-size: 1.4rem;
     line-height: 1.4;
+    font-weight: 600;
 }
 
 .projects-info a {
     display: inline-block;
     margin-top: 10px;
+    justify-content: center;
     color: #1e90ff;
     text-decoration: none;
     font-size: 1.2em;
+    border-radius: 50%;
 }
 
 .projects-info a:hover {
