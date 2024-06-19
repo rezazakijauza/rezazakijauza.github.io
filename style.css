@@ -46,7 +46,17 @@ header {
 .logo:hover {
     transform: scale(1.1);
 }
-/* Style umum untuk navbar */
+
+a {
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Navbar Styles */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -107,6 +117,7 @@ header {
     transition: background-color 0.3s;
 }
 
+/* Menu Icon */
 .menu-icon {
     display: none;
     cursor: pointer;
@@ -135,6 +146,11 @@ header {
 
 .menu-icon.active span:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Increase size of navbar icons */
+.nav-list a {
+    font-size: 2rem;
 }
 
 /* Responsive Styles */
@@ -169,6 +185,10 @@ header {
 
     .navbar a::after {
         display: none; /* Hide background in responsive mode */
+    }
+
+    .main-content {
+        padding: 100px 20px 20px 20px; /* Adjust padding to ensure visibility */
     }
 }
 
@@ -271,7 +291,6 @@ span {
 }
 
 .text-animation {
-    position: relative;
     font-size: 34px;
     font-weight: 600;
     min-width: 280px;
@@ -329,6 +348,7 @@ span {
         width: calc(100% + 8px);
     }
 }
+
 @media only screen and (max-width: 768px) {
     .header {
         padding: 0.5rem;
@@ -457,12 +477,14 @@ span {
     font-size: 1.6rem;
     margin: 2rem 0 3rem;
 }
+
 .text-animation {
     position: relative;
     font-size: 34px;
     font-weight: 600;
     min-width: 280px;
 }
+
 .text-animation span {
     position: relative;
 }
@@ -472,6 +494,7 @@ span {
     color: var(--main-color);
     animation: words 20s infinite;
 }
+
 .text-animation span::after {
     content: '';
     background-color: var(--second-bg-color);
@@ -728,7 +751,7 @@ span {
     font-weight: 800;
 }
 .projects-info p{
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin: 0.3rem 0 1rem;
     font-weight: 600;
 }
@@ -795,22 +818,16 @@ span {
     color: #0d6efd;
 }
 
-.hobby {
-    padding: 20px;
-    border-radius: 10px;
-    text-align: left;
-}
-
 .hobby-container {
     display: flex;
     align-items: center;
+    flex-direction: column;
     padding: 20px;
     margin-bottom: 20px;
-    width: 50%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
     border-radius: 20px;
-    box-shadow: 0 0 10px var(--main-color);
 }
 
 .hobby-box {
@@ -818,9 +835,9 @@ span {
     padding: 3rem 2rem 4rem;
     border-radius: 2rem;
     text-align: center;
-    border: 0.2rem solid var(--bg-color, #000);
     cursor: pointer;
     transition: 0.4s ease;
+    margin-bottom: 20px;
 }
 
 .hobby-box:hover {
@@ -837,8 +854,21 @@ span {
 }
 
 .hobby-box p {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     margin: 1rem 0 3rem;
+}
+
+/* Styles for screens 768px and wider */
+@media (min-width: 768px) {
+    .hobby-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .hobby-box {
+        margin: 10px;
+        width: calc(50% - 40px); /* Adjust the width as needed */
+    }
 }
 
 .bar .progress-line span{
