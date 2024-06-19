@@ -29,7 +29,7 @@ header {
     left: 0;
     width: 100%;
     padding: 3rem 9%;
-    background: rgba(0, 0, 0, 0.8);
+    background: black;
     backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
@@ -46,80 +46,139 @@ header {
 .logo:hover {
     transform: scale(1.1);
 }
+/* Style umum untuk navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.9);
+    transition: max-height 0.3s ease; /* Animasi untuk perubahan tinggi */
+    overflow: hidden; /* Sembunyikan elemen yang keluar dari kontainer */
+}
+
 .navbar a {
     font-size: 1.8rem;
     color: white;
     margin-left: 4rem;
     font-weight: 500;
-    transition: 0.3s ease;
     border-bottom: 3px solid transparent;
+    text-decoration: none;
+    position: relative;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
 }
+
 .navbar a:hover,
 .navbar a.active {
     color: var(--main-color);
     border-bottom: 3px solid var(--main-color);
-    text-shadow: 0 0 25px var(--main-color),
-                 0 0 50px var(--main-color);
+    text-shadow: 0 0 25px var(--main-color), 0 0 50px var(--main-color);
 }
-.menu-icon {
-    display: none;
-    font-size: 28px;
-    color: #fff;
-    cursor: pointer;
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
 }
-.menu-icon:hover {
-    display: block;
+
+.navbar a.active::after {
+    opacity: 1;
 }
+
 .nav-list {
     display: flex;
     list-style: none;
-    gap: 1em;
+    gap: 1rem;
     padding: 0;
     margin: 0;
 }
+
 .nav-list a {
     color: #fff;
     text-decoration: none;
     padding: 0.5em;
     transition: background-color 0.3s;
 }
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 11; /* Ensure the menu icon is above the navbar */
+}
+
+.menu-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #fff;
+    transition: all 0.3s;
+}
+
+.menu-icon.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-icon.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-icon.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Responsive Styles */
 @media only screen and (max-width: 768px) {
     .navbar {
         display: none;
-        width: 100%;
-        position: absolute;
-        top: 100px;
-        left: 0;
-        background-color: #000;
         flex-direction: column;
         align-items: center;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Adjusted for a more common navbar height */
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.9);
+        max-height: 0; /* Initial state with no height */
     }
+
     .menu-icon {
         display: block;
     }
+
     .navbar.active {
         display: flex;
-        text-align: center;
+        max-height: 320px; /* Adjust this value based on the number of menu items */
     }
+
     .navbar a {
-        width: 30%;
-        height: 30%;
-        text-align: center;
+        width: 100%;
         padding: 1rem;
-        flex-wrap: wrap;
+        margin-left: 0; /* Remove left margin in responsive mode */
+        text-align: center;
     }
-    .navbar a:last-of-type {
-        padding-bottom: 8px;
-    }
-    .menu-icon {
-        display: block;
+
+    .navbar a::after {
+        display: none; /* Hide background in responsive mode */
     }
 }
+
+
 
 section {
     min-height: 100vh;
     padding: 10rem 9%;
 }
+
 .home {
     display: flex;
     align-items: center;
@@ -127,29 +186,36 @@ section {
     height: 100vh;
     padding: 2rem;
 }
+
 .home-content h3 {
     font-size: 3.2rem;
     font-weight: 700;
 }
+
 span {
     color: var(--main-color);
 }
+
 .logo span {
     text-shadow: 0 0 25px var(--main-color),
                  0 0 100px var(--main-color);
 }
+
 .home-content h3:nth-of-type(2) {
     margin-bottom: 2rem;
     font-size: 5rem;
 }
+
 .home-content h1 {
     font-size: 8rem;
     font-weight: 700;
     line-height: 1.3;
 }
+
 .home-img {
     border-radius: 50%;
 }
+
 .home-img img {
     position: relative;
     width: 30vw;
@@ -157,10 +223,12 @@ span {
     border-radius: 50%;
     cursor: pointer;
 }
+
 .home-content p {
     font-size: 1.8rem;
     font-weight: 500;
 }
+
 .social-icons a {
     display: inline-flex;
     justify-content: center;
@@ -175,12 +243,14 @@ span {
     margin: 3rem 1.5rem 3rem 0;
     transition: 0.3s ease;
 }
+
 .social-icons a:hover {
     color: white;
     transform: scale(1.3) translateY(-5px);
     background-color: var(--main-color);
     box-shadow: 0 0 25px var(--main-color);
 }
+
 .btn {
     display: inline-block;
     padding: 1rem 2.8rem;
@@ -194,11 +264,14 @@ span {
     transition: 0.3s ease;
     cursor: pointer;
 }
+
 .btn:hover {
     box-shadow: 0 0 25px var(--main-color);
     transform: scale(1.05);
 }
+
 .text-animation {
+    position: relative;
     font-size: 34px;
     font-weight: 600;
     min-width: 280px;
@@ -213,7 +286,6 @@ span {
     color: var(--main-color);
     animation: words 20s infinite;
 }
-
 .text-animation span::after {
     content: '';
     background-color: var(--second-bg-color);
@@ -223,38 +295,6 @@ span {
     border-left: 2px solid #333;
     right: -8px;
     animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
-}
-
-@media only screen and (max-width: 768px) {
-    .header {
-        padding: 0.5rem;
-    }
-
-    .header .menu-icon {
-        display: block;
-    }
-
-    .header .navbar {
-        display: none;
-        position: absolute;
-        top: 50px;
-        left: 0;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        flex-direction: column;
-        align-items: center;
-        overflow: hidden;
-    }
-
-    .header .navbar.active {
-        display: flex;
-    }
-
-    .header .navbar a {
-        padding: 1rem;
-        text-align: center;
-        width: 100%;
-    }
 }
 
 @keyframes cursor {
@@ -287,6 +327,37 @@ span {
     }
     5%, 20%, 25%, 40%, 45%, 60%, 65%, 80%, 85% {
         width: calc(100% + 8px);
+    }
+}
+@media only screen and (max-width: 768px) {
+    .header {
+        padding: 0.5rem;
+    }
+
+    .header .menu-icon {
+        display: block;
+    }
+
+    .header .navbar {
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .header .navbar.active {
+        display: flex;
+    }
+
+    .header .navbar a {
+        padding: 1rem;
+        text-align: center;
+        width: 100%;
     }
 }
 
@@ -386,8 +457,13 @@ span {
     font-size: 1.6rem;
     margin: 2rem 0 3rem;
 }
-
 .text-animation {
+    position: relative;
+    font-size: 34px;
+    font-weight: 600;
+    min-width: 280px;
+}
+.text-animation span {
     position: relative;
 }
 
@@ -396,7 +472,6 @@ span {
     color: var(--main-color);
     animation: words 20s infinite;
 }
-
 .text-animation span::after {
     content: '';
     background-color: var(--second-bg-color);
@@ -407,6 +482,7 @@ span {
     right: -8px;
     animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
 }
+
 
 /* Button styling */
 .btn {
@@ -423,45 +499,105 @@ span {
     background-color: #357ab7;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    .heading {
-        font-size: 4rem;
+/* Media Query for Responsive Design */
+@media only screen and (max-width: 768px) {
+    /* Adjust Header Styles */
+    .header {
+        padding: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
-    .about-content h3 {
-        font-size: 2rem;
+    .header .menu-icon {
+        display: block;
+        font-size: 1.5rem;
+        cursor: pointer;
     }
 
-    .about-content p {
-        font-size: 1.4rem;
+    .header .navbar {
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        z-index: 1000;
     }
 
-    .btn {
-        padding: 8px 16px;
-    }
-}
-
-@media (max-width: 480px) {
-    .heading {
-        font-size: 2.5rem;
+    .header .navbar.active {
+        display: flex;
     }
 
-    .about-content h3 {
+    .header .navbar a {
+        padding: 1rem;
+        text-align: center;
+        width: 100%;
+        color: white;
+        text-decoration: none;
+    }
+
+    /* Adjust Profile Image */
+    .profile-img {
+        display: block;
+        margin: 1rem auto;
+        width: 50%;
+        border-radius: 50%;
+    }
+
+    /* Adjust Main Content */
+    .main-content {
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .main-content h1,
+    .main-content h2,
+    .main-content p {
+        margin: 0.5rem 0;
+    }
+
+    /* Adjust Social Media Icons */
+    .social-media-icons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+
+    .social-media-icons a {
+        color: var(--main-color);
         font-size: 1.5rem;
     }
 
-    .about-content p {
-        font-size: 1.2rem;
-    }
-
-    .btn {
-        padding: 6px 12px;
+    /* Adjust Button Styles */
+    .about-me-btn {
+        display: block;
+        margin: 1rem auto;
+        padding: 0.5rem 1rem;
+        background-color: var(--main-color);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1rem;
     }
 }
-.services h2{
+/* Keyframes for Animations */
+@keyframes cursor {
+    to {
+        border-left: 2px solid var(--main-color);
+    }
+}
+/* Style untuk heading dalam layanan */
+.services h2 {
     margin-bottom: 5rem;
 }
+
+/* Container utama untuk layanan */
 .services-container {
     display: flex;
     align-items: center;
@@ -475,6 +611,7 @@ span {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+/* Box individual dalam layanan */
 .services-box {
     flex: 1;
     background: var(--second-bg-color, #2e2e2e);
@@ -493,20 +630,24 @@ span {
     color: black;
 }
 
+/* Ikon dalam layanan */
 .services-box i {
     font-size: 7rem;
     color: var(--main-color, #0d6efd);
 }
 
+/* Judul dalam layanan */
 .services-box h3 {
     font-size: 2.6rem;
 }
 
+/* Paragraf dalam layanan */
 .services-box p {
     font-size: 1.6rem;
     margin: 1rem 0 3rem;
 }
 
+/* Tombol dalam layanan */
 .services-box .btn {
     display: inline-block;
     padding: 10px 20px;
@@ -520,16 +661,21 @@ span {
 .services-box .btn:hover {
     background-color: #0056b3;
 }
-::-webkit-scrollbar{
+
+/* Scrollbar untuk webkit browser */
+::-webkit-scrollbar {
     width: 15px;
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar-thumb {
     background-color: var(--main-color);
 }
-::-webkit-scrollbar-track{
+
+::-webkit-scrollbar-track {
     background-color: #1d1d1d;
     width: 50px;
 }
+
 .projects{
     background: var(--second-bg-color);
 }
@@ -582,7 +728,7 @@ span {
     font-weight: 800;
 }
 .projects-info p{
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     margin: 0.3rem 0 1rem;
     font-weight: 600;
 }
@@ -650,7 +796,6 @@ span {
 }
 
 .hobby {
-    border: 2px solid #3498db;
     padding: 20px;
     border-radius: 10px;
     text-align: left;
@@ -659,19 +804,17 @@ span {
 .hobby-container {
     display: flex;
     align-items: center;
-    background-color: #2e2e2e;
     padding: 20px;
     margin-bottom: 20px;
-    width: 80%;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    box-shadow: 0 0 10px var(--main-color);
 }
 
 .hobby-box {
     flex: 1;
-    background: var(--second-bg-color, #2e2e2e);
     padding: 3rem 2rem 4rem;
     border-radius: 2rem;
     text-align: center;
@@ -681,10 +824,7 @@ span {
 }
 
 .hobby-box:hover {
-    border-color: var(--main-color, #0d6efd);
-    transform: scale(1.02);
-    background-color: white;
-    color: black;
+    transform: scale(1.05);
 }
 
 .hobby-box i {
@@ -826,4 +966,23 @@ span {
     margin-top: auto;
     margin-bottom: 3rem;
 }
+.header-section footer{
+    color: var(--main-color);
+}
+footer {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem 0; /* py-3: padding-top dan padding-bottom */
+    color: #ffffff;
+    text-align: center;
+}
 
+footer .container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+footer p {
+    font-size: 1.3rem; /* fs-7 */
+    margin-bottom: 0; /* mb-0 */
+}

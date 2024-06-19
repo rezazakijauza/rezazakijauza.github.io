@@ -13,18 +13,15 @@
     <header class="header">
         <a href="#home" class="logo">Reza<span> Z.J</span></a>
 
-        <div class="menu-icon" id="menu-icon">
-            <i class="ph ph-list"></i>
-            </div>
-
+        <div class="menu-icon" id="menu-icon">&#9776;</div>
         <nav class="navbar" id="navbar">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#hobby">Hobby</a>
-            <a href="#contact">Contact</a>
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#hobby" class="nav-link">Hobby</a>
+            <a href="#contact" class="nav-link">Contact</a>
         </nav>
     </header>
 
@@ -47,15 +44,6 @@
             <img src="assets/foto-blazer-biru.jpg" alt="Reza Zaki Jauza" class="profile-photo">
         </div>
     </section>
-
-    <script>
-        const menuIcon = document.getElementById('menu-icon');
-        const navbar = document.getElementById('navbar');
-
-        menuIcon.addEventListener('click', () => {
-            navbar.classList.toggle('active');
-        });
-    </script>
 
     <section class="about" id="about">
         <div class="about-img">
@@ -346,6 +334,14 @@
             <input type="submit" value="Send Message" class="btn">
         </form>
     </section>
+
+
+    <footer class="py-3">
+        <div class="container">
+            <p class="text-white fs-7 mb-0">Copyright &copy; 2024 by Reza Zaki Jauza. All Right Reserved</p>
+        </div>
+    </footer>
+
 
     <script src="script.js"></script>
 </body>
