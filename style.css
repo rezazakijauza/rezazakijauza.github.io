@@ -764,8 +764,7 @@ span {
 
 .projects-info a:hover {
     color: #fff;
-    background: radial-gradient(rgba(0, 0, 0, 0.5),
-    var(--main-color));
+    background: radial-gradient rgba(0, 0, 0, 0.5);
     transform: scale(1.1);
 }
 
